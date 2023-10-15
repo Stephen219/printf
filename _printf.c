@@ -1,62 +1,50 @@
 #include "main.h"
 /**
- * _printf - this is the custom printf functioon to be called in the main
- * @format: the first arg of the variadic function prinf
- * @...: the other args
- * Return: the number of bytes printed as int for a succces execution
+ * _printf - Printf function
+ * @format: format.
+ * Return: Printed chars.
  */
-
-int _printf(const char *format, ...);
-
-
 int _printf(const char *format, ...)
 {
-	int chars_printed = 0;
+	char buffer[BUFF_SIZE];
+	int buff_ind = 0;
+	int number_of_chars_printed = 0;
 	va_list list_args;
 
+	va_start(list_args, format);
 	if (format == NULL)
-	{
 		return (-1);
-	}
-	else
+	while (*format)
 	{
-		va_start(list_args, format);
-
-		while (*format)
+		if (*format != '%')
 		{
-			if (*format != '%')
-			{
-				write(1, format, 1);
-				chars_printed++;
-			}
-			else
-			{
-				format++;
-				if (*format == '\0')
-					break;
-				else if (*format == 'c')
-				{
-					char c = va_arg(list_args, int);
-
-					write(1, &c, 1);
-					chars_printed++;
-				}
-				else if (*format == '%')
-				{
-					write(1, format, 1);
-					chars_printed++;
-				}
-				else if (*format == 's')
-				{
-					char *s = va_arg(list_args, char *);
-
-					write(1, s, strlen(s));
-					chars_printed += strlen(s);
-				}
-			}
-			format++;
+			add_char_to_buffer(buffer, &buff_ind, *format, &number_of_chars_printed);
 		}
-		va_end(list_args);
+		else
+		{
+			format++;
+			if (*format == '\0')
+				break;
+			else if (*format == '%')
+				add_char_to_buffer(buffer, &buff_ind, *format, &number_of_chars_printed);
+			else if (*format == 'c')
+				handle_char_format(buffer, &buff_ind, &number_of_chars_printed, list_args);
+			else if (*format == 's')
+				handle_string_format(
+						buffer, &buff_ind, &number_of_chars_printed, list_args);
+			else if (*format == 'd' || *format == 'i')
+			{
+				handle_integer_format(
+						buffer, &buff_ind, &number_of_chars_printed, list_args);
+			}
+		}
+		format++;
 	}
-	return (chars_printed);
+	if (buff_ind > 0)
+	{
+		print_buffer(buffer, &buff_ind);
+	}
+	va_end(list_args);
+	return (number_of_chars_printed);
 }
+
