@@ -6,6 +6,8 @@
  * Return: the number of bytes printed as int for a succces execution
  */
 
+int _printf(const char *format, ...);
+
 
 int _printf(const char *format, ...)
 {
@@ -23,25 +25,35 @@ int _printf(const char *format, ...)
 		while (*format)
 		{
 			if (*format != '%')
+			{
 				write(1, format, 1);
 				chars_printed++;
+			}
 			else
+			{
 				format++;
 				if (*format == '\0')
 					break;
 				else if (*format == 'c')
+				{
 					char c = va_arg(list_args, int);
 
 					write(1, &c, 1);
 					chars_printed++;
+				}
 				else if (*format == '%')
+				{
 					write(1, format, 1);
 					chars_printed++;
+				}
 				else if (*format == 's')
+				{
 					char *s = va_arg(list_args, char *);
 
 					write(1, s, strlen(s));
 					chars_printed += strlen(s);
+				}
+			}
 			format++;
 		}
 		va_end(list_args);
