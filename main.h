@@ -21,4 +21,7 @@ void handle_string_format(
 void handle_integer_format(
 		char *buffer,
 		int *buff_ind, int *number_of_chars_printed, va_list list_args);
+
+void handle_binary_integer_format(
+                char *buffer, int *buff_ind, int *number_of_chars_printed, va_list list_args);
 #endif

@@ -19,7 +19,7 @@ The project consists of the following files:
 - `main.h`: This header file includes the function prototypes for the custom `printf` function and any other necessary declarations.
 
 - `main.c`: This file contains an example program that demonstrates the usage of the custom `printf` function  (`_printf`). It is mainlty used to test the functionality of the programme using the various format specifiers.
- 
+- `_printf.c`: this is the file containing the implementation of the custom printf  it has the printf function.
 
 
 ## How to Compile and Run
@@ -40,5 +40,5 @@ To run the program, use the following command:
 this project is being done by:
 
 - [**Stephen Kariuki** ](https://github.com/Stephen219)
-- [**Fransicah Abanti** ](https://github.com/fransicahabanti)
+- [**Fransicah Abanti** ](https://github.com/Fsandimu)
 
