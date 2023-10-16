@@ -48,4 +48,3 @@ int _printf(const char *format, ...)
 	va_end(list_args);
 	return (number_of_chars_printed);
 }
-

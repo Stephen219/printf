@@ -7,7 +7,6 @@
  * @list_args: A va_list of arguments.
  */
 
-
 void handle_binary_integer_format(
 		char *buffer, int *buff_ind, int *number_of_chars_printed, va_list list_args)
 {
@@ -25,4 +24,3 @@ void handle_binary_integer_format(
 		add_char_to_buffer(buffer, buff_ind, binary[i], number_of_chars_printed);
 	}
 }
-
