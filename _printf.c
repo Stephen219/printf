@@ -33,10 +33,11 @@ int _printf(const char *format, ...)
 				handle_string_format(
 						buffer, &buff_ind, &number_of_chars_printed, list_args);
 			else if (*format == 'd' || *format == 'i')
-			{
 				handle_integer_format(
 						buffer, &buff_ind, &number_of_chars_printed, list_args);
-			}
+			else if (*format == 'b')
+				handle_binary_integer_format(buffer,
+						&buff_ind, &number_of_chars_printed, list_args);
 		}
 		format++;
 	}
