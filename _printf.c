@@ -8,7 +8,7 @@ int _printf(const char *format, ...)
 {
 	char buffer[BUFF_SIZE];
 	int buff_ind = 0;
-	int chars_printed = 0;
+	int number_of_chars_printed = 0;
 	va_list list_args;
 
 	va_start(list_args, format);
@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			add_char_to_buffer(buffer, &buff_ind, *format, &chars_printed);
+			add_char_to_buffer(buffer, &buff_ind, *format, &number_of_chars_printed);
 		}
 		else
 		{
@@ -26,18 +26,18 @@ int _printf(const char *format, ...)
 			if (*format == '\0')
 				break;
 			else if (*format == '%')
-				add_char_to_buffer(buffer, &buff_ind, *format, &chars_printed);
+				add_char_to_buffer(buffer, &buff_ind, *format, &number_of_chars_printed);
 			else if (*format == 'c')
-				handle_char_format(buffer, &buff_ind, &chars_printed, list_args);
+				handle_char_format(buffer, &buff_ind, &number_of_chars_printed, list_args);
 			else if (*format == 's')
 				handle_string_format(
-						buffer, &buff_ind, &chars_printed, list_args);
+						buffer, &buff_ind, &number_of_chars_printed, list_args);
 			else if (*format == 'd' || *format == 'i')
 				handle_integer_format(
-						buffer, &buff_ind, &chars_printed, list_args);
+						buffer, &buff_ind, &number_of_chars_printed, list_args);
 			else if (*format == 'b')
 				handle_binary_integer_format(buffer,
-						&buff_ind, &chars_printed, list_args);
+						&buff_ind, &number_of_chars_printed, list_args);
 		}
 		format++;
 	}
@@ -46,5 +46,5 @@ int _printf(const char *format, ...)
 		print_buffer(buffer, &buff_ind);
 	}
 	va_end(list_args);
-	return (chars_printed);
+	return (number_of_chars_printed);
 }

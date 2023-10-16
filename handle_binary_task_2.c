@@ -3,12 +3,13 @@
  * handle_binary_integer_format - Handles binary representation of an integer.
  * @buffer: The buffer for storing characters.
  * @buff_ind: A pointer to the buffer index.
- * @chars_printed: A pointer to the number of characters printed.
+ * @number_of_chars_printed: A pointer to the number of characters printed.
  * @list_args: A va_list of arguments.
  */
 
+
 void handle_binary_integer_format(
-		char *buffer, int *buff_ind, int *chars_printed, va_list list_args)
+		char *buffer, int *buff_ind, int *number_of_chars_printed, va_list list_args)
 {
 	int i;
 	unsigned int integer = va_arg(list_args, unsigned int);
@@ -21,6 +22,6 @@ void handle_binary_integer_format(
 	}
 	for (i = 0; i < 32; i++)
 	{
-		add_char_to_buffer(buffer, buff_ind, binary[i],chars_printed);
+		add_char_to_buffer(buffer, buff_ind, binary[i], number_of_chars_printed);
 	}
 }
