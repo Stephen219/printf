@@ -17,9 +17,7 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
-		{
 			add_char_to_buffer(buffer, &buff_ind, *format, &number_of_chars_printed);
-		}
 		else
 		{
 			format++;
