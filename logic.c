@@ -27,7 +27,7 @@ void add_char_to_buffer(
 	{
 		print_buffer(buffer, buff_ind);
 	}
-	*chars_printed++;
+	chars_printed++;
 }
 
 /**
