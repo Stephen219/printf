@@ -41,4 +41,3 @@ this project is being done by:
 
 - [**Stephen Kariuki** ](https://github.com/Stephen219)
 - [**Fransicah Abanti** ](https://github.com/Fsandimu)
-
